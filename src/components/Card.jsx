@@ -26,7 +26,7 @@ const PriceCard = ({products}) => {
         <span
           className="mb-1 inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 text-sm font-medium items-center justify-center rounded-2xl bg-[#f0f5f0]"
         >
-          {products.change.dir==="up" ? <span className="text-red-700">▲</span> : <span className="text-green-700">▼</span>} {translateNumbers(Math.abs(products.change.pct))} %
+          {products.change.dir==="up" ? <span className="text-red-700">▲</span> : products.change.dir==="down"?<span className="text-green-700">▼</span>:<span>—</span>} {translateNumbers(Math.abs(products.change.pct))} %
         </span>
       </div>
     </div>

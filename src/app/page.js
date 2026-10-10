@@ -1,14 +1,20 @@
 import Hero from "@/components/Hero";
 import Image from "next/image";
-import Marq from "@/components/Marq";
 import Priceinc from "@/components/Priceinc";
+import Pricedec from "@/components/Pricedec";
+import Allprod from "@/components/Allprod";
 
-export default function Home() {
+const Home =async()=> {
+  const res= await fetch("https://api.api-store.workers.dev/api/bazardor/products")
+ const prodata=await res.json();
   return (
     <div>
-    <Marq/>
     <Hero/>
-    <Priceinc></Priceinc>
+    <Priceinc priceinc={prodata}/>
+    <Pricedec pricedec={prodata}/>
+    <Allprod allpr={prodata}/>
     </div>
   );
 }
+
+export default Home;

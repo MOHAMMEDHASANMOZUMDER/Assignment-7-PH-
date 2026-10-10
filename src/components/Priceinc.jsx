@@ -1,8 +1,7 @@
 import PriceCard from "./Card";
-const Priceinc = async() => {
-    const res=await fetch("https://api.api-store.workers.dev/api/bazardor/products")
-    const data=await res.json()
-    const top= data.sort((a,b)=>b.change.pct-a.change.pct).slice(0,6)
+const Priceinc = async({priceinc}) => {
+   
+    const top= priceinc.sort((a,b)=>b.change.pct-a.change.pct).filter(d=>d.change.dir==="up").slice(0,6)
     return (
         
         <div className="max-w-7xl mx-auto mt-8 flex flex-col gap-4">

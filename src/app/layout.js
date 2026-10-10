@@ -2,6 +2,8 @@ import { Geist, Geist_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Marquee from "react-fast-marquee";
+import Marq from "@/components/Marq";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +35,13 @@ export default function RootLayout({ children }) {
         <nav>
           <Navbar>
           </Navbar>
+          <Marq/>
         </nav>
         <main>
           {children}
         </main>
+        <Footer>
+        </Footer>
       </body>
     </html>
   );

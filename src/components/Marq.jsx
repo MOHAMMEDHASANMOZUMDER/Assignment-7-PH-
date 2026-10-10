@@ -22,10 +22,10 @@ const Marq = async() => {
                     টাকা/{UnitBn(v.unit)}
                 </p>
                 <p>
-                    {v.change.dir==="up"?<span className="text-red-700">▲</span>:<span className="text-green-700">▼</span>}
+                    {v.change.dir==="up"?<span className="text-red-700">▲</span>:v.change.dir==="down"?<span className="text-green-700">▼</span>:<span>—</span>}
                 </p>
                 <p>
-                    {Math.abs(v.change.pct)}%
+                    { translateNumbers(Math.abs(v.change.pct))  }%
                 </p>
                 </li>)}
                </Marquee>

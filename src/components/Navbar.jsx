@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { CurrTime } from '@/lib/currTime';
 
 const Navbar = async() => {
+    
     const res=await fetch("https://api.api-store.workers.dev/api/bazardor/categories")
     const data=await res.json()
     console.log(data)
