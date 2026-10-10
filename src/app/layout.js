@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Marquee from "react-fast-marquee";
 import Marq from "@/components/Marq";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +35,9 @@ export default async function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`${hindSiliguri.className} bg-[#f0f5f0]`}>
+        <Toaster position="top-right"/>
         <nav>
-          {/* <div className="fixed top-0 left-0 z-50 w-full bg-white shadow-sm">
-            
-          </div> */}
           <Navbar data={catdata}/>
-          
           <Marq/>
         </nav>
         <main>

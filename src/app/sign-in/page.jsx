@@ -1,16 +1,25 @@
 "use client";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { signIn } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 export default function SigninPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries())
-
+ const { data:authData, error } = await signIn.email({
+        email:data.email,
+        password:data.password
+    });
+    if (error) {
+  toast.error("Sign In failed");
+    }
+    else toast.success("Sign In successfull")
+}
   return (
      <div className="min-h-screen bg-[#f0f5f0] px-4 py-12">
   <div className="mx-auto flex w-full max-w-[520px] flex-col items-center">
-    {/* Heading */}
     <div className="mb-7 text-center">
       <h1 className="text-3xl font-bold text-[#17251c]">
         সাইন ইন
@@ -19,7 +28,6 @@ export default function SigninPage() {
         বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
       </p>
     </div>
-{/* Form Card */}
 <div className="w-full rounded-[20px] border border-[#dce5dd] bg-[#fbfdfb] p-6 sm:p-8">
   <Form className="flex w-full flex-col gap-5" onSubmit={onSubmit}>
     <TextField
@@ -78,14 +86,12 @@ export default function SigninPage() {
       সাইন ইন
     </Button>
 
-    {/* Divider */}
     <div className="flex items-center gap-4">
       <div className="h-px flex-1 bg-slate-200" />
       <span className="text-sm text-slate-500">অথবা</span>
       <div className="h-px flex-1 bg-slate-200" />
     </div>
 
-    {/* Social Sign-in */}
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
       <Button
         type="button"
@@ -106,9 +112,8 @@ export default function SigninPage() {
       </Button>
     </div>
 
-    {/* Sign-up Link */}
     <p className="text-center text-sm text-slate-500">
-      অ্যাকাউন্ট নেই?{" "}
+      অ্যাকাউন্ট নেই?
       <a
         href="/signup"
         className="font-medium text-green-700 underline underline-offset-2 hover:text-green-800"
@@ -125,5 +130,4 @@ export default function SigninPage() {
 </div>
 
   );
-}
 }
