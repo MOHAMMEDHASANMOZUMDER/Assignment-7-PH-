@@ -4,7 +4,7 @@ import { CurrTime } from '@/lib/currTime';
 
 const Navbar = async() => {
     
-    const res=await fetch("https://api.api-store.workers.dev/api/bazardor/categories")
+    const res=await fetch("https://api.abcz.workers.dev/api/bazardor/categories")
     const data=await res.json()
     console.log(data)
     return (
@@ -24,7 +24,7 @@ const Navbar = async() => {
                 <ul>
                     <li className='flex gap-8'>
                         {
-                            data.map(n=><Link href='/' key={n.id} className='flex gap-2 hover:bg-green-700 rounded-xl p-2 font-semibold'>
+                            data.map(n=><Link href={`/products/${n.id}`} key={n.id} className='flex gap-2 hover:bg-green-700 rounded-xl p-2 font-semibold'>
                                 <p>{n.nameBn}</p>
                         <span>
                             {n.icon}

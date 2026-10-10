@@ -5,7 +5,7 @@ import Pricedec from "@/components/Pricedec";
 import Allprod from "@/components/Allprod";
 
 const Home =async()=> {
-  const res= await fetch("https://api.api-store.workers.dev/api/bazardor/products")
+  const res= await fetch("https://api.abcz.workers.dev/api/bazardor/products")
  const prodata=await res.json();
   return (
     <div>

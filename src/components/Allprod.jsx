@@ -9,7 +9,7 @@ const Allprod = ({allpr}) => {
     const allprlh=[...allpr].sort((a,b)=>a.today-b.today)
     return (
        
-        <div className="max-w-7xl mx-auto mt-8 flex flex-col gap-4">
+        <div className="max-w-7xl mx-auto mt-8 flex flex-col gap-4" id="সব-পণ্য">
             <div className="flex justify-between items-center">
                 <div>
                     <p className="font-bold text-[20px]">  সব পণ্য</p>

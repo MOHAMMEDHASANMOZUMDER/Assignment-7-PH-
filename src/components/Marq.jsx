@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 import { translateNumbers } from "@/lib/bnnumber";
 import { UnitBn } from "@/lib/unit";
 const Marq = async() => {
-    const res= await fetch("https://api.api-store.workers.dev/api/bazardor/products")
+    const res= await fetch("https://api.abcz.workers.dev/api/bazardor/products")
     const data= await res.json();
     return (
         <div className="py-2.5 border-b-1 border-slate-300 overflow-hidden">
