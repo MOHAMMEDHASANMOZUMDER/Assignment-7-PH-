@@ -1,14 +1,15 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import { CurrTime } from '@/lib/currTime';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-const Navbar = async() => {
-    
-    const res=await fetch("https://api.abcz.workers.dev/api/bazardor/categories")
-    const data=await res.json()
-    console.log(data)
+const Navbar =({data}) => {
+    const pathname = usePathname();
+    const [active, setActive]=useState(false)
     return (
-        <div className='border-b-1 border-slate-300'>
+        <div className='border-b-1 border-slate-300 fixed top-0 left-0 z-50 w-full bg-white'>
             <div className='max-w-7xl mx-auto'>
             <div className='flex justify-between'>
                     <Link href='/' className='flex items-center'>
@@ -23,15 +24,16 @@ const Navbar = async() => {
             <div className='p-4'>
                 <ul>
                     <li className='flex gap-8'>
-                        {
-                            data.map(n=><Link href={`/products/${n.id}`} key={n.id} className='flex gap-2 hover:bg-green-700 rounded-xl p-2 font-semibold'>
-                                <p>{n.nameBn}</p>
-                        <span>
-                            {n.icon}
-                        </span>
-                            </Link>)
-                        }
-                    </li>
+                        {data.map((n) =>{
+        const href = `/products/${n.id}`;
+        const active = pathname === href;
+          return(<Link
+            key={n.id}
+            href={href}
+            className={`rounded-xl p-2 font-semibold ${active? "bg-green-700 text-white":"hover:bg-green-700 hover:text-white"}`}>
+            {n.nameBn} {n.icon}
+          </Link>) })};
+        </li>
                 </ul>
             </div>
         </div>

@@ -1,12 +1,14 @@
 import { UnitBn } from "@/lib/unit";
 import { translateNumbers } from "@/lib/bnnumber";
+import Link from "next/link";
 
 const PriceCard = ({products}) => {
   return (
     <div className="w-full rounded-[22px] border border-[#dce6dd] bg-[#fafcfb] p-5 transition-shadow hover:shadow-md">
+      <Link href={`/product/${products.id}`}>
       <div className="flex items-center gap-4">
         <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-2xl bg-[#f0f5f0] text-3xl">
-            {products.categoryIcon}
+            {products.image}
         </div>
         <div>
           <h3 className="text-xl font-bold leading-tight text-[#1d271f]">
@@ -24,11 +26,11 @@ const PriceCard = ({products}) => {
         </div>
 
         <span
-          className="mb-1 inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 text-sm font-medium items-center justify-center rounded-2xl bg-[#f0f5f0]"
-        >
+          className="mb-1 inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 text-sm font-medium items-center justify-center rounded-2xl bg-[#f0f5f0]">
           {products.change.dir==="up" ? <span className="text-red-700">▲</span> : products.change.dir==="down"?<span className="text-green-700">▼</span>:<span>—</span>} {translateNumbers(Math.abs(products.change.pct))} %
         </span>
       </div>
+      </Link>
     </div>
   );
 };

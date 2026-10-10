@@ -1,7 +1,8 @@
 import PriceCard from "@/components/Card";
+import ProductSort from "@/components/ProductSort";
 const Detailpage = async({params}) => {
-    const {category}=await params
-    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${category}`);
+  const {category}=await params
+    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${category}`);
     const pdata=await res.json();
   return (
     <main className="min-h-screen bg-[#f0f5f0] px-4 py-8 sm:px-8">
@@ -18,30 +19,7 @@ const Detailpage = async({params}) => {
             </p>
           </div>
         </section>
-
-        {/* Product Count and Sorting */}
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-base text-[#718071] sm:text-lg">
-            মোট {pdata.length} পণ্য দেখানো হচ্ছে
-          </p>
-
-          <div className="flex shrink-0 items-center gap-2">
-            <span className="text-[#718071]">সাজান</span>
-
-            <button
-              type="button"
-              className="rounded-xl border border-[#cfd9cf] bg-[#fafcfb] px-3 py-2 text-sm text-[#17251c]"
-            >
-              ডিফল্ট ⌄
-            </button>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          pdata.map(d=><PriceCard products={d}  key={d.id}/>)
-        }
-
-            </div>
+        <ProductSort detailprod={pdata}/>
             </div>
     </main>
   );

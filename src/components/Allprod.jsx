@@ -46,7 +46,7 @@ const Allprod = ({allpr}) => {
 
                 </div>
             </div>
-           <div className="grid grid-cols-3 gap-4">
+           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {
                 select==="default"?(allpr.map(d=>
                     (<div key={d.id}>
