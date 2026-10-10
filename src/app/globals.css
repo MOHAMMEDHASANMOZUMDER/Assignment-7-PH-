@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "@heroui/styles"; 
 @theme {
   --color-gry: #1d271f;
   --color-bg: #FAFCFA;
