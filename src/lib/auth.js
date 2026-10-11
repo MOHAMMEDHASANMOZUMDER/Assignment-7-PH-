@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
 
-
+export const instant = false;
 export const auth = betterAuth({
   database: mongodbAdapter(await dbPromise, {
     client,
