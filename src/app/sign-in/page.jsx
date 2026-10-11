@@ -2,9 +2,11 @@
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import { signIn } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function SigninPage() {
+   const[show1, setShow1]=useState(false)
   const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -31,6 +33,10 @@ export default function SigninPage() {
       
     })
   }
+   const handleChange = (event) => {
+    setPass(event.target.value);
+  };
+
   return (
      <div className="min-h-screen bg-[#f0f5f0] px-4 py-12">
   <div className="mx-auto flex w-full max-w-[520px] flex-col items-center">
@@ -69,7 +75,7 @@ export default function SigninPage() {
       isRequired
       minLength={8}
       name="password"
-      type="password"
+      type={show1?"text":"password"}
       validate={(value) => {
         if (value.length < 8) {
           return "Password must be at least 8 characters";
@@ -86,10 +92,14 @@ export default function SigninPage() {
       <Label className="mb-2 block text-base font-medium text-slate-800">
         পাসওয়ার্ড
       </Label>
-      <Input
-        placeholder="কমপক্ষে ৮ অক্ষর"
-        className="w-full rounded-xl border border-[#cbd5ce] bg-transparent px-4 py-3 text-sm outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-      />
+      <div className="relative inline-block">
+                      <Input
+              onChange={handleChange}
+                     placeholder="কমপক্ষে ৮ অক্ষর"
+                     className="w-full rounded-xl border border-[#cbd5ce] bg-transparent px-4 py-3 text-sm outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                   />
+                   <button className="hover:cursor-pointer absolute right-3 top-1/2 -translate-y-1/2" type="button" onClick={()=>setShow1(!show1)}>{show1?<Image src={"/cl.png"} height={30} width={30} alt="" />:<Image Image src={"/op.png"} height={25} width={25} alt="" />}</button>
+                   </div>
       <FieldError />
     </TextField>
 
