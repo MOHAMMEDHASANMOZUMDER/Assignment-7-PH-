@@ -19,7 +19,7 @@ const DetailbyIdpage = async({params}) => {
         <div>
             <div className="mx-auto max-w-7xl">
 <div className="mb-5 text-xs text-slate-500">
-<Link href="/" className="hover:underline">হোম</Link> &gt; <Link href="">ডাল</Link> &gt; মুগ ডাল
+<Link href="/" className="hover:underline">হোম</Link> &gt; <Link href="">{data.categoryNameBn}</Link> &gt; {data.nameBn}
 </div>
     <section className="mb-4 flex items-center justify-between rounded-xl bg-white p-4">
       <div className="flex items-center gap-3">
