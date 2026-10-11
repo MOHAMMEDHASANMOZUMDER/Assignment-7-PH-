@@ -5,8 +5,7 @@ import Marquee from "react-fast-marquee";
 import Marq from "@/components/Marq";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const instant = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
