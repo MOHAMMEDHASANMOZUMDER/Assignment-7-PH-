@@ -2,9 +2,23 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
 
-export const instant = false;
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  throw new Error("MONGODB_URI is not configured");
+}
+
+const globalForMongo = globalThis;
+const client = globalForMongo.mongoClient ?? new MongoClient(uri);
+
+if (process.env.NODE_ENV !== "production") {
+  globalForMongo.mongoClient = client;
+}
+
+const db = client.db();
+
 export const auth = betterAuth({
-  database: mongodbAdapter(await dbPromise, {
+  database: mongodbAdapter(db, {
     client,
   }),
 
