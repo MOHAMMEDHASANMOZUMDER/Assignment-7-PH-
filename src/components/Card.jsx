@@ -1,13 +1,17 @@
+"use client"
 import { UnitBn } from "@/lib/unit";
 import { translateNumbers } from "@/lib/bnnumber";
 import Link from "next/link";
+import { useSession } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const PriceCard = ({products}) => {
+    
   return (
     <div className="w-full rounded-[22px] border border-[#dce6dd] bg-[#fafcfb] p-5 transition-shadow hover:shadow-md">
       <Link href={`/product/${products.id}`}>
       <div className="flex items-center gap-4">
-        <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-2xl bg-[#f0f5f0] text-3xl">
+        <div className="flex h-15 w-15 shrink-0 items-center justify-center rounded-2xl bg-[#f0f5f0] text-3xl">
             {products.image}
         </div>
         <div>

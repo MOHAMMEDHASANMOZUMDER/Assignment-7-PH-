@@ -4,8 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { signUp } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-const SignUppage = () => {
+
+const SignUppage = ()=>{
+  const router=useRouter();
     const [pass,setPass]=useState("")
     const[show1, setShow1]=useState(false)
     const [show2,setShow2]=useState(false)
@@ -16,12 +19,14 @@ const SignUppage = () => {
         const { data:authData, error } = await signUp.email({
         email:data.email, 
         name:data.name,
-        password:data.password
+        password:data.password,
+         callbackURL: "/",
     });
     if (error) {
-  toast.error("Signup failed");
+  toast.error("অ্যাকাউন্ট তৈরি করা যায়নি");
     }
-    else toast.success("Sign up successfull")
+    else toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে")
+    router.push("/")
 }
 
 
@@ -31,7 +36,6 @@ const SignUppage = () => {
     return (
        <div className="min-h-screen bg-[#f0f5f0] px-4 py-12">
          <div className="mx-auto flex w-full max-w-[520px] flex-col items-center">
-           {/* Heading */}
            <div className="mb-7 text-center">
              <h1 className="text-3xl font-bold text-[#17251c]">
                অ্যাকাউন্ট তৈরি করুন
@@ -40,7 +44,6 @@ const SignUppage = () => {
               বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
              </p>
            </div>
-       {/* Form Card */}
        <div className="w-full rounded-[20px] border border-[#dce5dd] bg-[#fbfdfb] p-6 sm:p-8">
          <Form className="flex w-full flex-col gap-5" onSubmit={onSubmit}>
              <TextField
@@ -143,52 +146,20 @@ const SignUppage = () => {
              type="submit"
              className="w-full rounded-xl bg-green-700 py-3 font-bold text-white shadow-md transition hover:bg-green-800"
            >
-             সাইন ইন
+             সাইন আপ
            </Button>
        
-           {/* Divider */}
-           <div className="flex items-center gap-4">
-             <div className="h-px flex-1 bg-slate-200" />
-             <span className="text-sm text-slate-500">অথবা</span>
-             <div className="h-px flex-1 bg-slate-200" />
-           </div>
-       
-           {/* Social Sign-in */}
-           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-             <Button
-               type="button"
-               variant="secondary"
-               className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-transparent px-3 py-3 text-sm font-medium text-slate-800 hover:bg-slate-100"
-             >
-               <span className="font-bold text-base text-blue-600">G</span>
-               Google দিয়ে চালিয়ে যান
-             </Button>
-       
-             <Button
-               type="button"
-               variant="secondary"
-               className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-transparent px-3 py-3 text-sm font-medium text-slate-800 hover:bg-slate-100"
-             >
-               <span className="font-bold text-base">●</span>
-               GitHub দিয়ে চালিয়ে যান
-             </Button>
-           </div>
-       
-           {/* Sign-up Link */}
+          
            <p className="text-center text-sm text-slate-500">
-             অ্যাকাউন্ট নেই?{" "}
+             অলরেডি অ্যাকাউন্ট আচে?
              <a
-               href="/signup"
-               className="font-medium text-green-700 underline underline-offset-2 hover:text-green-800"
-             >
-               সাইন আপ করুন
+               href="/sign-in"
+               className="font-medium text-green-700 underline underline-offset-2 hover:text-green-800">
+               সাইন ইন করুন
              </a>
            </p>
          </Form>
        </div>
-       
-       {/* Back Home */}
-       
          </div>
        </div>
        

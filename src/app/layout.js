@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],
-   weight: ["300", "400", "500", "600", "700"],
+   weight: ["300"],
   variable: "--font-hind-siliguri"
 })
 export const metadata = {

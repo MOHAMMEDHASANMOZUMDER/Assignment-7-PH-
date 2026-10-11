@@ -5,6 +5,7 @@ const DetailbyIdpage = async({params}) => {
     const {id}=await params;
     const res=await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${id}`)
     const data=await res.json();
+    
 
     function avg(d){
     let cnt=0;
