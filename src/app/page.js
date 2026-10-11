@@ -5,6 +5,8 @@ import Pricedec from "@/components/Pricedec";
 import Allprod from "@/components/Allprod";
 import { Suspense } from "react";
 import ProductSkeleton from "@/components/Skeleton";
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 async function Products() {
   const res = await fetch(
